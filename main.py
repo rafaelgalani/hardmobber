@@ -173,7 +173,13 @@ def get_previous_values():
 
     return prev_results
 
-while True:
+should_scrap = True
+
+if quiet_update: 
+    scrape()
+    should_scrap = False
+
+while should_scrap:
     scrape()
     if debug:
         print('Sleeping for {} seconds...'.format(update_seconds_interval))
